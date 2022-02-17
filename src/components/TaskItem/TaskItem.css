@@ -1,0 +1,59 @@
+.task__item {
+  display: flex;
+  align-items: center;
+}
+
+.task__checkbox {
+  display: none;
+}
+
+.task__label {
+  display: block;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #E8E8E8;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-image: url(../../images/icon-success.svg);
+  background-size: 18px 15.5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out, background-image .2s ease-in-out, border .2s ease-in-out;
+}
+
+.task__label:hover {
+  background-color: #E8E8E8;
+}
+
+.task__checkbox:checked + .task__label {
+  background-color: #4DD599;
+  border-color: #4DD599;
+}
+
+.task__text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 19px;
+  color: #000000;
+  width: 100%;
+}
+
+.task__delete {
+  width: 15px;
+  height: 15px;
+  border: none;
+  background-color: inherit;
+  background-image: url('../../images/icon-delete.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.task__item:hover .task__delete {
+  opacity: .7;
+  cursor: pointer;
+}

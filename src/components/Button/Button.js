@@ -5,7 +5,7 @@ import './Button.css'
 function Button(props) {
 
   return (
-    <button className={`button ${props.className}`}>
+    <button className={`button ${props.className}`} onClick={props.openPopup}>
 
       <img className="button__icon" alt="Иконка" src={props.src}></img>
 

@@ -27,7 +27,7 @@ function SideBar(props) {
         </ul>
       </nav>
 
-      <Button src={`${AddIconBtn}`} text="Добавить папку" className="side-bar__button"/>
+      <Button src={`${AddIconBtn}`} text="Добавить папку" className="side-bar__button" openPopup={props.openPopup}/>
 
     </section>
   )
