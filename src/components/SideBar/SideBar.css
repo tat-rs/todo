@@ -1,0 +1,24 @@
+.side-bar {
+  width: 250px;
+  box-sizing: border-box;
+  padding: 60px 20px;
+  border-right: 1px solid #F1F1F1;
+  background-color: #fff;
+}
+
+.side-bar__button {
+  width: 100%;
+  opacity: .7;
+  transition: opacity .3s;
+}
+
+.side-bar__button:hover {
+  opacity: 1;
+}
+
+.side-bar__list {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 28px 0;
+}

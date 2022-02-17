@@ -1,0 +1,15 @@
+.page {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(45deg, #a8edea, #fed6e3);
+  font-family: Montserrat;
+  font-style: normal;
+}
+
+.page__content {
+  max-width: 880px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  box-shadow: -5px 5px 10px; color:#c7c7c7;
+}
