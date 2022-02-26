@@ -19,7 +19,7 @@ function AddTodoPopup(props) {
   function addTodo(evt) {
     evt.preventDefault();
     props.addTodo({
-      "id": Math.random()*10,
+      "id": `${Math.random() * 10}`,
       "title": value,
       "color": selectedColor,
       "tasks": []

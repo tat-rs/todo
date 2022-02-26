@@ -23,6 +23,8 @@ function App() {
     setActiveItem(todo)
   }
 
+  console.log(lists)
+
   React.useEffect(() => {
 
     localStorage.setItem('lists', JSON.stringify(lists));
@@ -46,12 +48,50 @@ function App() {
     setLists([...lists, item])
   }
 
+  function addTask(obj) {
+    //obj - новый элемент списка конкретной тудушки
+    const newLists = lists.map((item) => {
+      if(item.id === obj.listId) {
+        item.tasks = [...item.tasks, obj]
+      }
+      return item
+    })
+    setLists(newLists)
+  }
+
+  function removeTask(task) {
+    //obj - новый элемент списка конкретной тудушки
+    const newLists = lists.map((item) => {
+      if(item.id === task.listId) {
+        item.tasks = item.tasks.filter((item) => item.id !== task.id)
+      }
+      return item
+    })
+    setLists(newLists)
+  }
+
   function removeTodo(todo) {
 
     const newLists = lists.filter(element => element.id !== todo.id)
 
     setLists(newLists)
 
+  }
+
+  function onChangeCheckbox(obj) {
+    const newLists = lists.map((list) => {
+      if(list.id === obj.listId) {
+        list.tasks = list.tasks.map((task) => {
+          if(task.id === obj.taskId) {
+            task.complated = obj.complated
+          }
+          return task
+        })
+      }
+      return list
+    })
+
+    setLists(newLists)
   }
 
   return (
@@ -73,7 +113,9 @@ function App() {
             isOpenedTaskPopup={isOpenedTaskPopup}
             openTaskPopup={openTaskPopup}
             closePopup={closePopup}
-          
+            addTask={addTask}
+            removeTask={removeTask}
+            onChangeCheckbox={onChangeCheckbox}
           />
         }
         </section>

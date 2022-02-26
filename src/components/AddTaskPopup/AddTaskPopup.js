@@ -9,8 +9,16 @@ function AddTaskPopup(props) {
     setValue(evt.target.value)
   }
 
-  function addTask() {
+  function addTask(evt) {
+    evt.preventDefault()
+    props.addTask({
+      "listId": props.items.id,
+      "id": `${Math.random() * 10}`,
+      "text": value,
+      "completed": false,
+    })
 
+    props.closePopup();
   }
 
   return (

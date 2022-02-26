@@ -25,7 +25,12 @@ function Task(props) {
         {
           props.items && props.items.tasks.map((item, index) => (
 
-            <TaskItem item={item} key={index} index={index}/>
+            <TaskItem 
+              item={item} 
+              key={index} 
+              index={index}
+              removeTask={props.removeTask}
+              onChangeCheckbox={props.onChangeCheckbox}/>
           ))
         }
       
@@ -35,6 +40,8 @@ function Task(props) {
         props.isOpenedTaskPopup ?
         <AddTaskPopup 
           closePopup={props.closePopup}
+          addTask={props.addTask}
+          items={props.items}
         /> :
 
         <Button 
