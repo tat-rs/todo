@@ -90,6 +90,11 @@
 
 .form__item-color:hover {
   transform: scale(1.06);
+  border: 2px solid #575656;
+}
+
+.form__item-color_active {
+  border: 2px solid #313131;
 }
 
 .popup__button {

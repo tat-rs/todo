@@ -9,9 +9,23 @@ import './App.css';
 
 function App() {
 
-  const lists = ['Покупки', 'Фронт', 'Учеба'];
+  const [ lists, setLists ] = React.useState(
+    JSON.parse(localStorage.getItem('lists')) || []
+  );
 
   const [isOpenedPopup, setIsOpenedPopup] = React.useState(false);
+
+  const [activeItem, setActiveItem] = React.useState(null);
+
+  function handleSelectedTodo(todo) {
+    setActiveItem(todo)
+  }
+
+  React.useEffect(() => {
+
+    localStorage.setItem('lists', JSON.stringify(lists));
+
+  }, [lists]);
 
   function openPopup() {
     setIsOpenedPopup(true)
@@ -21,21 +35,39 @@ function App() {
     setIsOpenedPopup(false)
   }
 
+  function addTodo(item) {
+    setLists([...lists, item])
+  }
+
+  function removeTodo(todo) {
+
+    const newLists = lists.filter(element => element.id !== todo.id)
+
+    setLists(newLists)
+
+  }
+
   return (
     <div className="page__content">
 
       <SideBar 
         lists={lists} 
         openPopup={openPopup}
-    
+        removeTodo={removeTodo}
+        handleSelectedTodo={handleSelectedTodo}
         />
 
-      <Task />
+        <section className="task">
+        {
+          lists && activeItem && <Task items={activeItem} />
+        }
+        </section>
 
       <AddTodoPopup 
         colors={colors} 
         isOpenedPopup={isOpenedPopup}
         closePopup={closePopup}
+        addTodo={addTodo}
         />
     </div>
   );

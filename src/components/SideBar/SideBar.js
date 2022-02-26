@@ -20,7 +20,7 @@ function SideBar(props) {
 
           {
             props.lists.map((list, index) => (
-              <TodoList list={list} key={index}/>
+              <TodoList list={list} key={index} removeTodo={props.removeTodo} handleSelectedTodo={props.handleSelectedTodo}/>
             ))
           }
 

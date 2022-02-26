@@ -2,31 +2,37 @@ import React from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import './Task.css';
 
-function Task() {
+import Button from "../Button/Button";
 
-  const items = ['123', '345', '678'];
+import AddIconBtn from "../../images/add-icon.svg";
+
+function Task(props) {
 
   return (
-    <section className="task">
+    <>
 
       <div className="task__title-conteiner">
 
-        <h2 className="task__title">Фронтенд</h2>
+        <h2 className="task__title" style={{
+          color: props.items.color
+        }}>{props.items.title}</h2>
 
       </div>
 
       <ul className="task__list">
 
         {
-          items.map((item, index) => (
+          props.items && props.items.tasks.map((item, index) => (
 
             <TaskItem item={item} key={index} index={index}/>
           ))
         }
       
       </ul>
+
+      <Button src={`${AddIconBtn}`} text="Новая задача" openPopup={props.openPopup}/>
           
-    </section>
+    </>
   )
 }
 
