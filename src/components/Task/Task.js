@@ -5,6 +5,7 @@ import './Task.css';
 import Button from "../Button/Button";
 
 import AddIconBtn from "../../images/add-icon.svg";
+import AddTaskPopup from "../AddTaskPopup/AddTaskPopup";
 
 function Task(props) {
 
@@ -30,7 +31,19 @@ function Task(props) {
       
       </ul>
 
-      <Button src={`${AddIconBtn}`} text="Новая задача" openPopup={props.openPopup}/>
+      {
+        props.isOpenedTaskPopup ?
+        <AddTaskPopup 
+          closePopup={props.closePopup}
+        /> :
+
+        <Button 
+          src={`${AddIconBtn}`} 
+          text="Новая задача" 
+          openPopup={props.openTaskPopup}
+        />
+
+      }
           
     </>
   )

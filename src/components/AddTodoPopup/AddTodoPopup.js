@@ -1,6 +1,6 @@
 import React from "react";
 
-import './AddTodoPopup.css'
+import './AddTodoPopup.css';
 
 function AddTodoPopup(props) {
 
@@ -55,7 +55,7 @@ function AddTodoPopup(props) {
           }
 
         </ul>}
-        <button className="popup__button">Добавить</button>
+        <button className="popup__button popup__button_green">Добавить</button>
       </form>
       </div>
     </div>

@@ -15,6 +15,8 @@ function App() {
 
   const [isOpenedPopup, setIsOpenedPopup] = React.useState(false);
 
+  const [isOpenedTaskPopup, setIsOpenedTaskPopup] = React.useState(false);
+
   const [activeItem, setActiveItem] = React.useState(null);
 
   function handleSelectedTodo(todo) {
@@ -31,8 +33,13 @@ function App() {
     setIsOpenedPopup(true)
   }
 
+  function openTaskPopup() {
+    setIsOpenedTaskPopup(true)
+  }
+
   function closePopup() {
     setIsOpenedPopup(false)
+    setIsOpenedTaskPopup(false)
   }
 
   function addTodo(item) {
@@ -59,7 +66,15 @@ function App() {
 
         <section className="task">
         {
-          lists && activeItem && <Task items={activeItem} />
+          lists && activeItem && 
+          
+          <Task 
+            items={activeItem}
+            isOpenedTaskPopup={isOpenedTaskPopup}
+            openTaskPopup={openTaskPopup}
+            closePopup={closePopup}
+          
+          />
         }
         </section>
 
