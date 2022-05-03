@@ -12,7 +12,7 @@ function Task(props) {
   return (
     <>
 
-      <div className="task__title-conteiner">
+      <div className="task__title-container">
 
         <h2 className="task__title" style={{
           color: props.items.color
@@ -47,7 +47,7 @@ function Task(props) {
         <Button 
           src={`${AddIconBtn}`} 
           text="Новая задача" 
-          openPopup={props.openTaskPopup}
+          onClick={props.openTaskPopup}
         />
 
       }

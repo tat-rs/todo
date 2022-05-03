@@ -1,4 +1,3 @@
-import React from 'react';
 import AddTodoPopup from '../AddTodoPopup/AddTodoPopup';
 import SideBar from '../SideBar/SideBar';
 import Task from '../Task/Task';
@@ -6,30 +5,45 @@ import Task from '../Task/Task';
 import { colors } from '../../utils/colors';
 
 import './App.css';
+import { useEffect, useState } from 'react';
+import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
 
 function App() {
 
-  const [ lists, setLists ] = React.useState(
+  const [ lists, setLists ] = useState (
     JSON.parse(localStorage.getItem('lists')) || []
   );
 
-  const [isOpenedPopup, setIsOpenedPopup] = React.useState(false);
+  const [isOpenedPopup, setIsOpenedPopup] = useState(false);
 
-  const [isOpenedTaskPopup, setIsOpenedTaskPopup] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [activeItem, setActiveItem] = React.useState(null);
+  const [isOpenedTaskPopup, setIsOpenedTaskPopup] = useState(false);
+
+  const [activeItem, setActiveItem] = useState(null);
+
+  const location = useLocation();
+  const history = useHistory();
 
   function handleSelectedTodo(todo) {
-    setActiveItem(todo)
+    history.push(`/lists/${todo.id}`)
   }
 
-  console.log(lists)
-
-  React.useEffect(() => {
+  useEffect(() => {
 
     localStorage.setItem('lists', JSON.stringify(lists));
 
-  }, [lists]);
+    const listId = Number(location.pathname.split(`lists/`)[1])
+
+    if(lists) {
+      const list = lists.find(item => Number(item.id) === listId);
+      console.log(lists)
+      setActiveItem(list)
+    }
+
+    console.log(listId)
+
+  }, [lists, location.pathname]);
 
   function openPopup() {
     setIsOpenedPopup(true)
@@ -39,9 +53,14 @@ function App() {
     setIsOpenedTaskPopup(true)
   }
 
+  function handleMenu() {
+    setIsMenuOpen(true)
+  }
+
   function closePopup() {
     setIsOpenedPopup(false)
     setIsOpenedTaskPopup(false)
+    setIsMenuOpen(false)
   }
 
   function addTodo(item) {
@@ -102,22 +121,57 @@ function App() {
         openPopup={openPopup}
         removeTodo={removeTodo}
         handleSelectedTodo={handleSelectedTodo}
+        isMenuOpen={isMenuOpen}
+        handleMenu={handleMenu}
         />
 
         <section className="task">
-        {
-          lists && activeItem && 
-          
-          <Task 
-            items={activeItem}
-            isOpenedTaskPopup={isOpenedTaskPopup}
-            openTaskPopup={openTaskPopup}
-            closePopup={closePopup}
-            addTask={addTask}
-            removeTask={removeTask}
-            onChangeCheckbox={onChangeCheckbox}
-          />
-        }
+
+        <Switch>
+          <Route exact path='/'>
+
+            <ul className='all-task'>
+
+              {lists.map((item) => (
+
+                <li key={item.id}>
+                  <Task
+                    items={item}
+                    isOpenedTaskPopup={isOpenedTaskPopup}
+                    openTaskPopup={openTaskPopup}
+                    closePopup={closePopup}
+                    addTask={addTask}
+                    removeTask={removeTask}
+                    onChangeCheckbox={onChangeCheckbox}/>
+                </li>
+
+              ))}
+            </ul>
+
+          {
+            lists.length === 0 && (<div>НЕТ ЗАДАЧ</div>)
+          }
+
+          </Route>
+
+          <Route path='/lists/:id'>
+            {
+              lists && activeItem && 
+              
+              <Task 
+                items={activeItem}
+                isOpenedTaskPopup={isOpenedTaskPopup}
+                openTaskPopup={openTaskPopup}
+                closePopup={closePopup}
+                addTask={addTask}
+                removeTask={removeTask}
+                onChangeCheckbox={onChangeCheckbox}
+              />
+            }
+          </Route>
+
+        </Switch>
+
         </section>
 
       <AddTodoPopup 

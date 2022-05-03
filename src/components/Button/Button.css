@@ -17,6 +17,8 @@
 .button__icon {
   display: block;
   width: 20px;
+  box-sizing: border-box;
+  padding: 3px;
   margin-right: 10px;
 }
 
@@ -30,4 +32,11 @@
   color: #000000;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 980px) {
+  .button__text {
+    font-size: 20px;
+    line-height: 20px;
+  }
 }

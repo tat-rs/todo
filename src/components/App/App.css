@@ -13,3 +13,24 @@
   display: flex;
   box-shadow: -5px 5px 10px; color:#c7c7c7;
 }
+
+.all-task {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width:980px) {
+  .page__content {
+    max-width: calc(100% - 60px);
+  }
+}
+
+@media (max-width: 500px) {
+  .page__content {
+    max-width: 100%;
+  }
+}

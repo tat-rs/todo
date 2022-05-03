@@ -4,7 +4,7 @@
   padding: 60px 55px;
 }
 
-.task__title-conteiner {
+.task__title-container {
   display: flex;
   padding-bottom: 20px;
   border-bottom: 1px solid #a8edea;
@@ -23,4 +23,26 @@
   list-style-type: none;
   margin: 0 0 15px 0;
   padding: 0;
+}
+
+@media (max-width: 980px) {
+  .task {
+    padding: 30px 25px;
+  }
+
+  .task__title-container {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  .task__title {
+    font-size: 29px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .task {
+    padding: 15px 10px;
+  }
 }

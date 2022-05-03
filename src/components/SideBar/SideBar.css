@@ -1,15 +1,23 @@
 .side-bar {
-  flex-basis: 250px;
   box-sizing: border-box;
   padding: 60px 20px;
   border-right: 2px solid #fed6e3;
   background-color: #fff;
 }
 
+.side-bar_size_big {
+  max-width: 30%;
+  min-width: 200px;
+}
+
 .side-bar__button {
   width: 100%;
   opacity: .7;
   transition: opacity .3s;
+}
+
+.side-bar__size_little {
+  display: none;
 }
 
 .side-bar__button:hover {
@@ -21,4 +29,14 @@
   list-style-type: none;
   margin: 0;
   padding: 28px 0;
+}
+
+@media (max-width: 980px) {
+  .side-bar {
+    padding: 30px 20px;
+  }
+
+  .side-bar__list {
+    padding: 15px 0;
+  }
 }

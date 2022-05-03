@@ -10,7 +10,7 @@
   transition: visibility .5s, opacity .5s ease-in-out;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .3);
   color: #000;
   z-index: 500;
 }
@@ -128,4 +128,23 @@
 
 .popup__button:hover {
   opacity: 1;
+}
+
+@media (max-width: 980px) {
+  .popup__form {
+    padding: 15px;
+  }
+
+  .form__item {
+    padding: 8px 5px;
+    font-size: 15px;
+    line-height: 16px;
+  }
+
+  .popup__button {
+    padding: 14px 7px;
+    min-height: 30px;
+    font-size: 15px;
+    line-height: 16px;
+  }
 }

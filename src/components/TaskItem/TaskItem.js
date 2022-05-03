@@ -1,4 +1,7 @@
 import React from "react";
+import AddTaskPopup from "../AddTaskPopup/AddTaskPopup";
+import Button from "../Button/Button";
+import AddIconBtn from "../../images/add-icon.svg";
 
 import './TaskItem.css'
 
@@ -20,8 +23,7 @@ function TaskItem(props) {
   }
 
   return (
-    <>
-      <li className="task__item">
+    <li className="task__item">
       
         <input className="task__checkbox" id={`checkbox-${props.index}`} type='checkbox' name="checkbox" onChange={handleChecked} checked={props.item.complated || false}></input>
         <label htmlFor={`checkbox-${props.index}`} className="task__label"></label>
@@ -29,8 +31,6 @@ function TaskItem(props) {
 
         <button className="task__delete" onClick={removeTask}></button>
     </li>
-
-    </>
   )
 }
 
