@@ -18,8 +18,6 @@ function App() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [isOpenedTaskPopup, setIsOpenedTaskPopup] = useState(false);
-
   const [activeItem, setActiveItem] = useState(null);
 
   const location = useLocation();
@@ -49,17 +47,12 @@ function App() {
     setIsOpenedPopup(true)
   }
 
-  function openTaskPopup() {
-    setIsOpenedTaskPopup(true)
-  }
-
   function handleMenu() {
     setIsMenuOpen(true)
   }
 
   function closePopup() {
     setIsOpenedPopup(false)
-    setIsOpenedTaskPopup(false)
     setIsMenuOpen(false)
   }
 
@@ -137,8 +130,6 @@ function App() {
                 <li key={item.id}>
                   <Task
                     items={item}
-                    isOpenedTaskPopup={isOpenedTaskPopup}
-                    openTaskPopup={openTaskPopup}
                     closePopup={closePopup}
                     addTask={addTask}
                     removeTask={removeTask}
@@ -149,7 +140,7 @@ function App() {
             </ul>
 
           {
-            lists.length === 0 && (<div>НЕТ ЗАДАЧ</div>)
+            lists.length === 0 && (<div>Нет задач</div>)
           }
 
           </Route>
@@ -160,8 +151,6 @@ function App() {
               
               <Task 
                 items={activeItem}
-                isOpenedTaskPopup={isOpenedTaskPopup}
-                openTaskPopup={openTaskPopup}
                 closePopup={closePopup}
                 addTask={addTask}
                 removeTask={removeTask}

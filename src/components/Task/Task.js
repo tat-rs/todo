@@ -1,4 +1,4 @@
-import React from "react"; 
+import React, { useState } from "react"; 
 import TaskItem from "../TaskItem/TaskItem";
 import './Task.css';
 
@@ -8,6 +8,12 @@ import AddIconBtn from "../../images/add-icon.svg";
 import AddTaskPopup from "../AddTaskPopup/AddTaskPopup";
 
 function Task(props) {
+
+  const [isOpenedTaskPopup, setIsOpenedTaskPopup] = useState(false);
+
+  function handleChangeVisibleBtn() {
+    setIsOpenedTaskPopup(!isOpenedTaskPopup)
+  }
 
   return (
     <>
@@ -37,9 +43,9 @@ function Task(props) {
       </ul>
 
       {
-        props.isOpenedTaskPopup ?
+        isOpenedTaskPopup ?
         <AddTaskPopup 
-          closePopup={props.closePopup}
+          closePopup={handleChangeVisibleBtn}
           addTask={props.addTask}
           items={props.items}
         /> :
@@ -47,7 +53,7 @@ function Task(props) {
         <Button 
           src={`${AddIconBtn}`} 
           text="Новая задача" 
-          onClick={props.openTaskPopup}
+          onClick={handleChangeVisibleBtn}
         />
 
       }
