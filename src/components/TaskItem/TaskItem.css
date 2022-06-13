@@ -10,8 +10,8 @@
 
 .task__label {
   display: block;
-  min-width: 25px;
-  height: 25px;
+  min-width: 20px;
+  height: 20px;
   border: 2px solid #E8E8E8;
   background-color: #fff;
   border-radius: 50%;
@@ -76,8 +76,8 @@
   }
 
   .task__label {
-    min-width: 17px;
-    height: 17px;
+    min-width: 15px;
+    height: 15px;
     margin-right: 10px;
   }
 

@@ -1,0 +1,53 @@
+.task__navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity .5s ease-in-out;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, .3);
+  color: #000;
+  z-index: 200;
+}
+
+.task__navbar_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar {
+  flex-grow: 1;
+  max-width: 520px;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__list {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 159px 0 0;
+  gap: 22px;
+}
+
+@media (max-width: 768px) {
+  .task__navbar {
+    display: flex;
+  }
+}
+
+@media (max-width: 590px) {
+  .navbar__list {
+    gap: 15px;
+  }
+}

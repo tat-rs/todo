@@ -14,6 +14,12 @@
   width: 100%;
   opacity: .7;
   transition: opacity .3s;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.side-bar__button_active {
+  border: 1px solid #a8edea;
 }
 
 .side-bar__size_little {
@@ -39,4 +45,11 @@
   .side-bar__list {
     padding: 15px 0;
   }
+}
+
+@media (max-width: 768px) {
+  .side-bar {
+    display: none;
+  }
+
 }

@@ -23,9 +23,25 @@
   padding: 0;
 }
 
+.hamburgerBtn {
+  display: none;
+}
+
 @media (max-width:980px) {
   .page__content {
     max-width: calc(100% - 60px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburgerBtn {
+    display: block;
+    margin-left: auto;
+  }
+
+  .hamburgerBtn img {
+    width: 25px;
+    height: 25px;
   }
 }
 

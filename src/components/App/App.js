@@ -2,11 +2,15 @@ import AddTodoPopup from '../AddTodoPopup/AddTodoPopup';
 import SideBar from '../SideBar/SideBar';
 import Task from '../Task/Task';
 
+import AllTasksBtn from "../../images/icon-all-tasks.svg";
 import { colors } from '../../utils/colors';
 
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
+import Button from '../Button/Button';
+import Navigation from '../Navigation/Navigation';
+import HamburgerButton from '../HamburgerButton/HamburgerButton';
 
 function App() {
 
@@ -15,6 +19,7 @@ function App() {
   );
 
   const [isOpenedPopup, setIsOpenedPopup] = useState(false);
+  const [isOpenedNavPopup, setIsOpenedNavPopup] = useState(false);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -35,16 +40,17 @@ function App() {
 
     if(lists) {
       const list = lists.find(item => Number(item.id) === listId);
-      console.log(lists)
       setActiveItem(list)
     }
-
-    console.log(listId)
 
   }, [lists, location.pathname]);
 
   function openPopup() {
     setIsOpenedPopup(true)
+  }
+
+  function openNavPopup() {
+    setIsOpenedNavPopup(true)
   }
 
   function handleMenu() {
@@ -54,6 +60,7 @@ function App() {
   function closePopup() {
     setIsOpenedPopup(false)
     setIsMenuOpen(false)
+    setIsOpenedNavPopup(false)
   }
 
   function addTodo(item) {
@@ -109,7 +116,8 @@ function App() {
   return (
     <div className="page__content">
 
-      <SideBar 
+      <SideBar
+        activeItem={activeItem}
         lists={lists} 
         openPopup={openPopup}
         removeTodo={removeTodo}
@@ -119,6 +127,20 @@ function App() {
         />
 
         <section className="task">
+
+        <HamburgerButton
+          isMenuOpen={isOpenedNavPopup}
+          closeNavMenu={closePopup}
+          openNavMenu={openNavPopup}
+        />
+        
+        <Navigation
+          lists={lists}
+          isMenuOpen={isOpenedNavPopup}
+          closePopup={closePopup}
+          activeItem={activeItem}
+          removeTodo={removeTodo}
+          handleSelectedTodo={handleSelectedTodo} />
 
         <Switch>
           <Route exact path='/'>

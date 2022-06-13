@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useEffect, useState } from "react"; 
 import TaskItem from "../TaskItem/TaskItem";
 import './Task.css';
 
@@ -10,6 +10,10 @@ import AddTaskPopup from "../AddTaskPopup/AddTaskPopup";
 function Task(props) {
 
   const [isOpenedTaskPopup, setIsOpenedTaskPopup] = useState(false);
+
+  useEffect(() => {
+    setIsOpenedTaskPopup(false)
+  }, [props.items])
 
   function handleChangeVisibleBtn() {
     setIsOpenedTaskPopup(!isOpenedTaskPopup)

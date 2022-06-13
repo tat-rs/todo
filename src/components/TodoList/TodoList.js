@@ -13,11 +13,14 @@ function TodoList(props) {
   }
 
   return (
-    <li className="item" onClick={handleSelectedTodo}>
-      <div className="item__color"style={{
-        backgroundColor: props.list.color,
-        borderColor: props.list.color,
-      }}></div>
+    <li className={`item ${props.activeItem?.id === props.list.id ? 'item_active' : ''}`} onClick={handleSelectedTodo}>
+      <div
+        className="item__color"
+        style={{
+          backgroundColor: props.list.color,
+          borderColor: props.list.color,
+        }}>
+      </div>
 
       <p className="item__text">{props.list.title}</p>
 
